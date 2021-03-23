@@ -1,0 +1,184 @@
+---
+title: "Des directives cadres pour l’environnement marin et de leurs mises en applications opérationnelles"
+author: "Laurent Dubroca"
+date: "24 et 25 mars 2021"
+output:
+  slidy_presentation:
+    font_adjustment: -1
+    toc_depth: 1
+    number_section: false
+    highlight: pygments
+bibliography: '/home/moi/Zotero/exportdb/My Library.json'
+csl: 'cell-numeric.csl'
+link-citations: yes
+linkcolor: blue
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+---
+
+**Préambule**
+
+Ce document présente les différentes politiques publiques et directives européennes qui encadrent la réglementation des usages du milieu marin. 
+Il vient en support d’un cours destiné aux étudiants en Master 1 Gestion de l’Environnement / Risques et Environnement de l’université du Havre. 
+Ce cours est accompagné par un ensemble de travaux pratiques permettant d’appréhender la mise en oeuvre opérationnelle des directives utilisant essentiellement le logiciel R [@r2020] l’accès aux données marines ouvertes. 
+Ce document est sous license libre, et plus précisement [MIT](https://fr.wikipedia.org/wiki/Licence_MIT).
+Les chaînes de caractères [bleues](https://fr.wikipedia.org/wiki/Bleu) sont cliquables et contiennent des liens hypertextes renvoyant vers des ressources extérieures.
+Les notes telles que [@baumer2015Markdown] renvoient vers la bibliographie en fin de document (cliquable si le document est en affichage long).
+La navigation au sein de ce document html peut s'effectuer à l'aide des touches suivantes :
+
+- flèches droite et gauche pour naviguer en mode présentation
+- C : plan du document
+- F : fait apparaître ou disparaître la barre d'état de la présentation
+- A : affiche le document sous la forme d'une présentation ou d'un document long (facilite l'impression par exemple)
+- B et S : augmente ou diminue la taille d'affichage des caractères
+
+**Organisation**
+
+- 9 heures : 6h le 24 mars 2021 (9-12h puis 14-17h) et 3h le 25 mars 2021 (9h-12h)
+- en visioconférence (liens zoom à venir)
+- alternance de présentations et d'exercices pratiques avec une pause par tranche d'une trente
+- matériels : un ordinateur avec [RStudio Desktop](https://rstudio.com/products/rstudio/download/) 
+installé, connection internet  
+
+
+---
+
+## Introduction
+
+balblabla
+bloubloub [@r2020]
+
+## Gros bis
+
+<div class='left' style='float:left;width:48%'>
+code or image for left of slide
+</div>
+<div class='right' style='float:right;width:48%'>
+code or image for right
+</div>
+
+## Gros 2 {.tabset}
+
+### titre 1
+
+balblabla
+
+### titre 2
+
+balblabla
+
+
+## Moyen
+
+blabalbblaab
+
+### Petit ?
+
+blabalbalbaab
+
+## R Markdown
+
+Un test [@r2020] 
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Une image
+
+du texte
+
+![](../img/schema_ecosysteme_marin.png){width=50%}
+
+du texte
+
+```{r, echo=FALSE, out.width="50%", fig.cap="A nice image."}
+knitr::include_graphics("../img/schema_ecosysteme_marin.png")
+```
+
+## Slides avec bcp de texte
+
+blablbalblbalfb afl albflabf alfa zne fazohf pazfepfapfha pazef pza fzafe zapfej pzajf azef azef ze
+afe zpfj zaefpazfe jzapef azepf a
+zef zaepf zeaf zaef
+ azefpjazefazefzae
+ f zaef
+ azef ze z
+blablbalblbalfb afl albflabf alfa zne fazohf pazfepfapfha pazef pza fzafe zapfej pzajf azef azef ze
+afe zpfj zaefpazfe jzapef azepf a
+zef zaepf zeaf zaef
+ azefpjazefazefzae
+ 
+ 
+```{r, echo=FALSE, out.width="50%", fig.cap="A nice image."}
+knitr::include_graphics("../img/schema_ecosysteme_marin.png")
+```
+
+ f zaef
+ azef ze z
+blablbalblbalfb afl albflabf alfa zne fazohf pazfepfapfha pazef pza fzafe zapfej pzajf azef azef ze
+afe zpfj zaefpazfe jzapef azepf a
+zef zaepf zeaf zaef
+ azefpjazefazefzae
+ f zaef
+ azef ze z
+blablbalblbalfb afl albflabf alfa zne fazohf pazfepfapfha pazef pza fzafe zapfej pzajf azef azef ze
+afe zpfj zaefpazfe jzapef azepf a
+zef zaepf zeaf zaef
+ azefpjazefazefzae
+ f zaef
+ azef ze z
+blablbalblbalfb afl albflabf alfa zne fazohf pazfepfapfha pazef pza fzafe zapfej pzajf azef azef ze
+afe zpfj zaefpazfe jzapef azepf a
+zef zaepf zeaf zaef
+ azefpjazefazefzae
+ f zaef
+ azef ze z
+blablbalblbalfb afl albflabf alfa zne fazohf pazfepfapfha pazef pza fzafe zapfej pzajf azef azef ze
+afe zpfj zaefpazfe jzapef azepf a
+zef zaepf zeaf zaef
+ azefpjazefazefzae
+ f zaef
+ azef ze z
+blablbalblbalfb afl albflabf alfa zne fazohf pazfepfapfha pazef pza fzafe zapfej pzajf azef azef ze
+afe zpfj zaefpazfe jzapef azepf a
+zef zaepf zeaf zaef
+ azefpjazefazefzae
+ f zaef
+ azef ze z
+blablbalblbalfb afl albflabf alfa zne fazohf pazfepfapfha pazef pza fzafe zapfej pzajf azef azef ze
+afe zpfj zaefpazfe jzapef azepf a
+zef zaepf zeaf zaef
+ azefpjazefazefzae
+ f zaef
+ azef ze z
+
+
+
+## Slide with Bullets
+
+### Slide with bullets 1
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+### Slide with bullets 2
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Bibliographie
