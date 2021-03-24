@@ -35,13 +35,21 @@ La navigation au sein de ce document html peut s'effectuer à l'aide des touches
 - A : affiche le document sous la forme d'une présentation ou d'un document long (facilite l'impression par exemple)
 - B et S : augmente ou diminue la taille d'affichage des caractères
 
-**Organisation**
+### Organisation
 
 - 9 heures : 6h le 24 mars 2021 (9-12h puis 14-17h) et 3h le 25 mars 2021 (9h-12h)
 - en visioconférence (liens zoom à venir)
 - alternance de présentations et d'exercices pratiques avec des pauses régulières
 - matériels : un ordinateur avec [RStudio Desktop](https://rstudio.com/products/rstudio/download/) 
 installé, connection internet  
+
+### Ressources 
+
+Les ressources se trouvent ici : **<https://github.com/ldbk/DirEnvMar>** :
+
+- le répertoire **cours** contient ce support en html et Rmarkdown
+- le répertoire **TP** contient des ressources liées aux exemples pratiques
+- le répertoire **img** contient les images illustrant ces supports
 
 
 ## L'intervenant
@@ -467,6 +475,96 @@ Onze descripteurs qualitatifs, communs à tous les États membres de l’Union e
 knitr::include_graphics("../img/desc.png")
 ```
 
+## Cloner un répertoire git depuis github sur son ordinateur
+
+Avant tout il est nécessaire d'installer git <https://gitforwindows.org/>.
+
+### Etape 1
+```{r, echo=FALSE, out.width="100%", fig.cap="."}
+knitr::include_graphics("../img/git1.png")
+```
+### Etape 2
+
+Aller dans fichier -> nouveau projet
+
+```{r, echo=FALSE, out.width="100%", fig.cap="."}
+knitr::include_graphics("../img/git2.png")
+```
+### Etape 3
+
+Choisir Version Control
+
+```{r, echo=FALSE, out.width="100%", fig.cap="."}
+knitr::include_graphics("../img/git3.png")
+```
+### Etape 4
+
+Choisir Git
+```{r, echo=FALSE, out.width="100%", fig.cap="."}
+knitr::include_graphics("../img/git4.png")
+```
+### Etape 5
+
+- renseigner le lien vers le répertoire : **https://github.com/ldbk/DirEnvMar.git**
+- renseigner le répertoire d'accueil (avec browse/choisir par exemple)
+- cocher **ouvrir dans une nouvelle session** en bas à gauche
+- puis cliquer créer projet
+
+```{r, echo=FALSE, out.width="100%", fig.cap="."}
+knitr::include_graphics("../img/git5.png")
+```
+### Etape 6
+
+Synchronisation en cours !
+
+```{r, echo=FALSE, out.width="100%", fig.cap="."}
+knitr::include_graphics("../img/git7.png")
+```
+### Etape 7
+
+Bravo.
+```{r, echo=FALSE, out.width="100%", fig.cap="."}
+knitr::include_graphics("../img/git8.png")
+```
+
+## Un rapport automatique en Rmarkdown
+
+### Etape 1
+
+Dans RStudio -> fichier -> nouveau fichier -> R Markdown
+```{r, echo=FALSE, out.width="100%", fig.cap="."}
+knitr::include_graphics("../img/md3.png")
+```
+### Etape 2
+
+Cliquer sur OK
+```{r, echo=FALSE, out.width="100%", fig.cap="."}
+knitr::include_graphics("../img/md4.png")
+```
+### Etape 3
+
+Un document Rmarkdown prédéfini est créé.
+```{r, echo=FALSE, out.width="100%", fig.cap="."}
+knitr::include_graphics("../img/md5.png")
+```
+### Etape 4
+
+Cliquer sur knit (on peut préciser le répertoire de travail dans les options de ce menu)
+```{r, echo=FALSE, out.width="100%", fig.cap="."}
+knitr::include_graphics("../img/md6.png")
+```
+### Etape 5
+
+Choisir où le document est sauvé sur le disque dur de votre ordinateur.
+```{r, echo=FALSE, out.width="100%", fig.cap="."}
+knitr::include_graphics("../img/md7.png")
+```
+### Etape 6
+
+Un document html est généré. Bravo.
+```{r, echo=FALSE, out.width="100%", fig.cap="."}
+knitr::include_graphics("../img/md8.png")
+```
 ## Canevas slidy
 <div class='left' style='float:left;width:48%'>
 code or image for left of slide
