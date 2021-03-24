@@ -1,0 +1,88 @@
+---
+title: "Evolution spatiale et temporelle de la concentration de la chlorophylle a en baie de Seine de 2010 à 2019"
+author: "Laurent Dubroca"
+date: "03/24/2021"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Objectifs
+
+Ce rapport a pour objectif d'étudier les évolutions spatiales et temporelles de la concentration en
+chlorophylle a de surface dans la baie de Seine (France). En particulier un approche similaire à celle utilisait pour calculer le descripteur D5C2 de la Directive Cadre stratégie pour le milieu marin est testée.
+Ce rapport est reproductible en utilisant (1) le fichier Rmarkdown utilisé pour générer le rapport final et (2) les données téléchargées à partir du portail Copernicus.
+
+## Matériel et méthodes
+
+### Données
+
+Les données issues de l'observation satellitales de la couleur de l'eau permettant de quantifier la concentration en chlorophylle a du milieu sont extraites du portail Copernicus <https://marine.copernicus.eu/>. L'identifiant du jeu de données est OCEANCOLOUR_GLO_CHL_L4_REP_OBSERVATIONS_009_082 et le jeu de données  dataset-oc-glo-bio-multi-l4-chl_4km_monthly-rep. Nous utilisons la variable chl uniquement : concentration en chlorophylle a de surface en mg.m-3.
+
+Les observations sont mensuelles et couvrent la période  2010 à 2019.
+### Outils
+
+Le logiciel R dans l'environnement de développement RStudio est utilisé pour procéder aux analyses et à la représentation graphique des données.
+Les librairies suivantes sont utilisées :
+
+```{r lib}
+library(raster)
+library(rasterVis)
+library(mapdata)
+library(maps)
+```
+
+### Méthodes
+
+Définit moyenne, percentile 90 et méthodologie d'agrégation.
+
+## Résultats
+
+## Cartographie de la zone d'étude
+
+La zone d'étude est la baie de seine représentée sur la carte suivante :
+
+```{r zoneetude, include=T,echo=T,eval=T,fig.height=3}
+#un plot vide
+plot(1,xlim=c(-1.5,0.8),ylim=c(49.2,49.7),type="n",xlab="Longitude",ylab="Latitude",asp=1)
+#le trait de côte
+map("worldHires",xlim=c(-1.5,0.8),ylim=c(49.2,49.7),col="light grey",fill=T,add=T)
+```
+
+Les données sont lues :
+
+```{r readdata,eval=T}
+chl<-stack("./data/chl")
+```
+## Données mensuelles 
+
+```{r rawplt,eval=T,fig.height=9}
+levelplot(chl,margin=F,zscale=T,contour=T,par.settings= viridisTheme,main="Chl 2010-2019")
+```
+## Concentration en chlorophylle a moyenne de 2010 à 2019
+
+```{r readdata2,eval=T}
+#calcul de la moyenne et affichage
+meanchl<-mean(chl,na.rm=TRUE)
+plot(meanchl)
+title("Chl moy 2010-2019")
+#pour ajouter le trait de côte
+map("worldHires",xlim=c(-1.5,0.8),ylim=c(49.2,49.7),col="light grey",fill=T,add=T)
+## Analyses exploratoires et manipulation des objets raster
+```
+
+## Série temporelle de l'évolution de la concentration en chlorophylle a moyenne en baie de Seine de 2010 à 2019
+
+
+```{r ts1,eval=T}
+
+#serie temporelle
+chlts<-cellStats(chl,stat="mean",na.rm=T)
+#vecteur temporel
+temps<-strptime(gsub("X","",names(chlts)),"%Y.%m.%d")
+plot(temps,chlts,type="l")
+```
+
+
