@@ -1,7 +1,7 @@
 ---
-title: "Calcul de l'indicateur D5C2 dans le cadre de la DCSMM"
-author: "Laurent Dubroca"
-date: "03/24/2021"
+title: "Travaux pratiques 1"
+author: "Laurent"
+date: "2/19/2020"
 output: word_document
 ---
 
@@ -11,38 +11,87 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Objectifs
 
-Ce rapport a pour objectif d'étudier les évolutions spatiales et temporelles de la concentration en
-chlorophylle a de surface dans la baie de Seine (France). En particulier un approche similaire à celle utilisait pour calculer le descripteur D5C2 de la Directive Cadre stratégie pour le milieu marin est testée.
-Ce rapport est reproductible en utilisant (1) le fichier Rmarkdown utilisé pour générer le rapport final et (2) les données téléchargées à partir du portail Copernicus.
+L'objectif de ce TP est d'appréhender la mise en oeuvre d'un rapport automatique en Rmarkdown, ce qui signifie mélanger texte et analyses à partir de données ouvertes. Ce rapport traitera du calcul du descripteur D5C2 de la Directive Cadre Stratégie pour le milieu marin.
 
-## Matériel et méthodes
+## Données
 
-### Données
+Nous allons utiliser des données issues de l'observation satellitales de la couleur de l'eau permettant de quantifier la concentration en chlorophylle a du milieu.
 
-Les données issues de l'observation satellitales de la couleur de l'eau permettant de quantifier la concentration en chlorophylle a du milieu sont extraites du portail Copernicus <https://marine.copernicus.eu/>. L'identifiant du jeu de données est OCEANCOLOUR_GLO_CHL_L4_REP_OBSERVATIONS_009_082 et le jeu de données  dataset-oc-glo-bio-multi-l4-chl_4km_monthly-rep. Nous utilisons la variable chl uniquement : concentration en chlorophylle a de surface en mg.m-3.
+## Outils
 
-Les observations sont mensuelles et couvrent la période  2010 à 2019.
-### Outils
+### Rappels et consignes de moindre importance
 
-Le logiciel R dans l'environnement de développement RStudio est utilisé pour procéder aux analyses et à la représentation graphique des données.
-Les librairies suivantes sont utilisées :
+R est un logiciel dédié à l'anlyse de données. RStutio est un environnement de
+travail intégré qui permet de faciliter le travail sous R.
 
+- `getwd()` et `setwd()` permette de renseigner ou de positionner R dans un répertoire de travail
+  donné.
+- `NA` signifie donnée manquante.
+- `print()` affiche le contenu d'un objet ou un résumé de ce dernier.
+- `head()` affiche les 10 premières valeurs d'un objet.
+- `tail()` affiche les 10 dernières valeurs d'un objet.
+- pour installer une librairie (package) : `install.package("nomdupackage")`.
+- le travail est à mener en utilisant un script.
+- Pensez à enregistrer votre script.
+- Pensez à enregistrer votre script.
+ 
+
+### Pré-requis (?) :
+
+- R via RStudio installé,
+- savoir utiliser l'aide (comprendre l'usage d'une fonction et ses paramètres)
+- installer un package : menu Outils/Tools ou la commande install.packages().
+- savoir positionner son environnement de travail : getwd(), setwd() et retrouver des objets téléchargés sur son disque dur dans R.
+- un peu de statistique, des notions de SIG et c'est tout.
+
+## Librairies nécessaires
+
+Utiliser RStudio pour installer les librairies suivantes :
 ```{r lib}
+library(ncdf4) #si cela ne fonctionne pas me l'indiquer
 library(raster)
 library(rasterVis)
 library(mapdata)
 library(maps)
 ```
 
-### Méthodes
+## Données
 
-Définit moyenne, percentile 90 et méthodologie d'agrégation.
+Soit : 
+- <https://marine.copernicus.eu/> 
+- -> ocean products 
+- -> OCEANCOLOUR_GLO_CHL_L4_REP_OBSERVATIONS_009_082
+- add to cart
+- puis cart -> download product
+- choose a dataset -> dataset-oc-glo-bio-multi-l4-chl_4km_monthly-rep
+- renseigner les coodonnées suivantes pour la baie de Seine : xmin=-1.5, xmax=0.8, ymin=49.2, ymax=49.7.
+- date 2010-01-02 à 2019-31-12
+- download CHL seulement
+- cliquer sur download
+- enregisrer le fichier .nc sur votre disque
 
-## Résultats
+Soit utiliser les fichiers présents dans le répertoire data.
+
+## Lire les données
+
+### Fichier netcdf
+
+```{r readdata1,eval=F}
+chl<-stack("./data/chl.nc")
+```
+
+### Fichier rasterbrick
+
+```{r readdata2,eval=T}
+chl<-stack("./data/chl")
+```
+
+## Analyses exploratoires et manipulation des objets raster
+
 
 ## Cartographie de la zone d'étude
 
-La zone d'étude est la baie de seine représentée sur la carte suivante :
+La zone d'étude est la suivante :
 
 ```{r zoneetude, include=T,echo=T,eval=T,fig.height=3}
 #un plot vide
@@ -51,38 +100,53 @@ plot(1,xlim=c(-1.5,0.8),ylim=c(49.2,49.7),type="n",xlab="Longitude",ylab="Latitu
 map("worldHires",xlim=c(-1.5,0.8),ylim=c(49.2,49.7),col="light grey",fill=T,add=T)
 ```
 
-Les données sont lues :
+La baie de Seine donc.
 
-```{r readdata,eval=T}
-chl<-stack("./data/chl")
-```
-## Données mensuelles 
+## Manipulation de l'information
 
-```{r rawplt,eval=T,fig.height=9}
+```{r xplo,eval=T}
+dim(chl)
+names(chl)
+str(chl)
+#les cartes de chlorophylles
+plot(chl)
+#plus joli
+levelplot(chl)
+#encore plus joli
 levelplot(chl,margin=F,zscale=T,contour=T,par.settings= viridisTheme,main="Chl 2010-2019")
-```
-## Concentration en chlorophylle a moyenne de 2010 à 2019
 
-```{r readdata2,eval=T}
-#calcul de la moyenne et affichage
-meanchl<-mean(chl,na.rm=TRUE)
-plot(meanchl)
-title("Chl moy 2010-2019")
-#pour ajouter le trait de côte
-map("worldHires",xlim=c(-1.5,0.8),ylim=c(49.2,49.7),col="light grey",fill=T,add=T)
-## Analyses exploratoires et manipulation des objets raster
-```
-
-## Série temporelle de l'évolution de la concentration en chlorophylle a moyenne en baie de Seine de 2010 à 2019
-
-
-```{r ts1,eval=T}
+#pour extraire une partie de l'image
+zone<-extent(-0.5,0,49.4,49.8)
+chlpetit<-crop(chl,zone)
+plot(chlpetit)
 
 #serie temporelle
 chlts<-cellStats(chl,stat="mean",na.rm=T)
 #vecteur temporel
 temps<-strptime(gsub("X","",names(chlts)),"%Y.%m.%d")
 plot(temps,chlts,type="l")
-```
 
+#calcul de la moyenne et affichage
+meanchl<-mean(chl,na.rm=TRUE)
+plot(meanchl)
+title("Chl moy 2010-2019")
+#pour ajouter le trait de côte
+map("worldHires",xlim=c(-1.5,0.8),ylim=c(49.2,49.7),col="light grey",fill=T,add=T)
+
+#le quantile à 90% des cartes
+p90glob<-quantile(chl,0.9)
+temps<-strptime(gsub("X","",rownames(p90glob)),"%Y.%m.%d")
+plot(temps,p90glob,type="l")
+
+#un fonction pour calculer le p90 sur une serie
+p90<-function(a,na.rm=T){
+  p90tmp<-quantile(a,probs=.9,na.rm=T)
+  return(p90tmp)
+}
+#calcul du P90 par pixel
+chlp90<-stackApply(chl,rep(1,nlayers(chl)),p90)
+
+plot(chlp90)
+
+```
 
