@@ -1,7 +1,7 @@
 ---
-title: "Travaux pratiques 1"
-author: "Laurent"
-date: "2/19/2020"
+title: "Calcul de l'indicateur D5C2 dans le cadre de la DCSMM"
+author: "Laurent Dubroca"
+date: "03/24/2021"
 output: word_document
 ---
 
@@ -11,44 +11,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Objectifs
 
+Etc...
 L'objectif de ce TP est d'appréhender la mise en oeuvre d'un rapport automatique en Rmarkdown, ce qui signifie mélanger texte et analyses à partir de données ouvertes. Ce rapport traitera du calcul du descripteur D5C2 de la Directive Cadre Stratégie pour le milieu marin.
 
 ## Données
 
 Nous allons utiliser des données issues de l'observation satellitales de la couleur de l'eau permettant de quantifier la concentration en chlorophylle a du milieu.
 
-## Outils
-
-### Rappels et consignes de moindre importance
-
-R est un logiciel dédié à l'anlyse de données. RStutio est un environnement de
-travail intégré qui permet de faciliter le travail sous R.
-
-- `getwd()` et `setwd()` permette de renseigner ou de positionner R dans un répertoire de travail
-  donné.
-- `NA` signifie donnée manquante.
-- `print()` affiche le contenu d'un objet ou un résumé de ce dernier.
-- `head()` affiche les 10 premières valeurs d'un objet.
-- `tail()` affiche les 10 dernières valeurs d'un objet.
-- pour installer une librairie (package) : `install.package("nomdupackage")`.
-- le travail est à mener en utilisant un script.
-- Pensez à enregistrer votre script.
-- Pensez à enregistrer votre script.
- 
-
-### Pré-requis (?) :
-
-- R via RStudio installé,
-- savoir utiliser l'aide (comprendre l'usage d'une fonction et ses paramètres)
-- installer un package : menu Outils/Tools ou la commande install.packages().
-- savoir positionner son environnement de travail : getwd(), setwd() et retrouver des objets téléchargés sur son disque dur dans R.
-- un peu de statistique, des notions de SIG et c'est tout.
 
 ## Librairies nécessaires
 
 Utiliser RStudio pour installer les librairies suivantes :
 ```{r lib}
-library(ncdf4) #si cela ne fonctionne pas me l'indiquer
 library(raster)
 library(rasterVis)
 library(mapdata)

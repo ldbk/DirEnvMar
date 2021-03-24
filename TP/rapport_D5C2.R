@@ -19,10 +19,12 @@ library(maps)
 
 ## ----readdata1,eval=F---------------------------------------------------------
 ## pour lire un fichier netcdf
-## chl<-stack("./data/chl.nc")
+#chl<-stack("./data/chl.nc")
 
 
 ## ----readdata2,eval=T---------------------------------------------------------
+## penser à definir le chemin de travail : setwd()
+
 chl<-stack("./data/chl")
 
 
@@ -35,9 +37,17 @@ map("worldHires",xlim=c(-1.5,0.8),ylim=c(49.2,49.7),col="light grey",fill=T,add=
 
 ## manipulation de chl
 ## ----xplo,eval=T--------------------------------------------------------------
+#affiche les caractéristiques de l'objet
+chl
+print(chl)
 dim(chl)
 names(chl)
 str(chl)
+
+#voir la première image
+plot(chl[[1]])
+
+
 #les cartes de chlorophylles
 plot(chl)
 #plus joli
@@ -67,6 +77,7 @@ map("worldHires",xlim=c(-1.5,0.8),ylim=c(49.2,49.7),col="light grey",fill=T,add=
 p90glob<-quantile(chl,0.9)
 temps<-strptime(gsub("X","",rownames(p90glob)),"%Y.%m.%d")
 plot(temps,p90glob,type="l")
+lines(temps,chlts,col="red")
 
 #un fonction pour calculer le p90 sur une serie
 p90<-function(a,na.rm=T){
@@ -77,5 +88,6 @@ p90<-function(a,na.rm=T){
 chlp90<-stackApply(chl,rep(1,nlayers(chl)),p90)
 
 plot(chlp90)
+map("worldHires",xlim=c(-1.5,0.8),ylim=c(49.2,49.7),col="light grey",fill=T,add=T)
 
 
