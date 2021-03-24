@@ -1,16 +1,24 @@
 ## ----setup, include=FALSE-----------------------------------------------------
 knitr::opts_chunk$set(echo = TRUE)
 
+## pour installer les librairies manquantes faire :
+install.packages("rasterVis")
+install.packages("mapdata")
+##ou utiliser Tools -> install.packages
+
 
 ## ----lib----------------------------------------------------------------------
-library(ncdf4) #si cela ne fonctionne pas me l'indiquer
+#library(ncdf4) #si cela ne fonctionne pas me l'indiquer
 library(raster)
 library(rasterVis)
 library(mapdata)
 library(maps)
 
 
+#ici on lit les données
+
 ## ----readdata1,eval=F---------------------------------------------------------
+## pour lire un fichier netcdf
 ## chl<-stack("./data/chl.nc")
 
 
@@ -25,6 +33,7 @@ plot(1,xlim=c(-1.5,0.8),ylim=c(49.2,49.7),type="n",xlab="Longitude",ylab="Latitu
 map("worldHires",xlim=c(-1.5,0.8),ylim=c(49.2,49.7),col="light grey",fill=T,add=T)
 
 
+## manipulation de chl
 ## ----xplo,eval=T--------------------------------------------------------------
 dim(chl)
 names(chl)
