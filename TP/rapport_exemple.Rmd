@@ -20,8 +20,8 @@ Ce rapport est reproductible en utilisant (1) le fichier Rmarkdown utilisé pour
 ### Données
 
 Les données issues de l'observation satellitales de la couleur de l'eau permettant de quantifier la concentration en chlorophylle a du milieu sont extraites du portail Copernicus <https://marine.copernicus.eu/>. L'identifiant du jeu de données est OCEANCOLOUR_GLO_CHL_L4_REP_OBSERVATIONS_009_082 et le jeu de données  dataset-oc-glo-bio-multi-l4-chl_4km_monthly-rep. Nous utilisons la variable chl uniquement : concentration en chlorophylle a de surface en mg.m-3.
-
 Les observations sont mensuelles et couvrent la période  2010 à 2019.
+
 ### Outils
 
 Le logiciel R dans l'environnement de développement RStudio est utilisé pour procéder aux analyses et à la représentation graphique des données.
