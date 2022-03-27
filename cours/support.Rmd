@@ -1,7 +1,7 @@
 ---
 title: "Des directives cadres pour l’environnement marin et de leurs mises en applications opérationnelles"
 author: "Laurent Dubroca"
-date: "24 et 25 mars 2021"
+date: "28 et 29 mars 2022"
 output:
   slidy_presentation:
     font_adjustment: -3
@@ -13,6 +13,10 @@ link-citations: yes
 linkcolor: blue
 urlcolor: blue
 ---
+
+```{r compile, include=FALSE,eval=F,echo=F}
+rmarkdown::render("support.Rmd")
+```
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
