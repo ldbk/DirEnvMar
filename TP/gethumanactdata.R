@@ -40,23 +40,23 @@ gethumact<-function(nom="emodnet:aggregateareas",request="GetFeature"){
 #nat2000
 nat2000<-gethumact("natura2000areas")
 plot(nat2000)
-saveRDS(nat2000,file="./data/nat2000.rds")
+saveRDS(nat2000,file="../data/nat2000.rds")
 #aggregates areas
 aggareas<-gethumact('aggregateareas') 
 plot(aggareas)
-saveRDS(aggareas,file="./data/aggareas.rds")
+saveRDS(aggareas,file="../data/aggareas.rds")
 dredgespoil<-gethumact('dredgespoil') 
 plot(dredgespoil)
-saveRDS(dredgespoil,file="./data/dredgespoil.rds")
+saveRDS(dredgespoil,file="../data/dredgespoil.rds")
 munpol<-gethumact('munitionspoly') 
 plot(munpol)
-saveRDS(munpol,file="./data/munpol.rds")
+saveRDS(munpol,file="../data/munpol.rds")
 munpt<-gethumact('munitions') 
 plot(munpt)
-saveRDS(munpt,file="./data/munpt.rds")
+saveRDS(munpt,file="../data/munpt.rds")
 windfarms<-gethumact('windfarmspoly') 
 plot(windfarms)
-saveRDS(windfarms,file="./data/windfarms.rds")
+saveRDS(windfarms,file="../data/windfarms.rds")
 
 #a map
 ggplot(windfarms)+geom_sf()+borders("world") +coord_sf(ylim=c(49.2,49.8),xlim=c(-1.5,0.5))
@@ -87,15 +87,15 @@ getais<-function(nom="emodnet:2017_01_st_All",xmin=-1.5,xmax=0.5,ymin=49.2,ymax=
 #12 type of vessels from 00 to 12
 #time from 2017-01 to 2019-10
 #generate name
-alltime<-expand.grid(vesstype=sprintf("%02d",0:12),month=sprintf("%02d",1:12),year=2017:2019)
+alltime<-expand.grid(vesstype=sprintf("%02d",0:12),month=sprintf("%02d",1:12),year=2017:2021)
 allnom<-paste0("emodnet:",paste(alltime$year,alltime$month,"st",alltime$vesstype,sep="_"))
-allnom<-allnom[!grepl("2019_11",allnom)]
-allnom<-allnom[!grepl("2019_12",allnom)]
+#allnom<-allnom[!grepl("2019_11",allnom)]
+#allnom<-allnom[!grepl("2019_12",allnom)]
 #linouuuux
 #allais<-parallel::mclapply(allnom,getais,mc.cores=parallel::detectCores())
 allais<-lapply(allnom,getais)
 allais<-stack(allais)
-writeRaster(allais,filename="./data/allais",format="raster",overwrite=T)
+writeRaster(allais,filename="../data/allais",format="raster",overwrite=T)
 
 
 #a test

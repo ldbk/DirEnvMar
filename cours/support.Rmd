@@ -29,7 +29,7 @@ Il vient en support d’un cours destiné aux étudiants en Master 1 Gestion de 
 Ce cours est accompagné par un ensemble de travaux pratiques permettant d’appréhender la mise en oeuvre opérationnelle des directives utilisant essentiellement le logiciel R [@r2020] l’accès aux données marines ouvertes. 
 Ce document est sous license libre, et plus précisement [MIT](https://fr.wikipedia.org/wiki/Licence_MIT).
 Les chaînes de caractères [bleues](https://fr.wikipedia.org/wiki/Bleu) sont cliquables et contiennent des liens hypertextes renvoyant vers des ressources extérieures.
-Les références telles que @baumer2015Markdown renvoient vers la bibliographie en fin de document (cliquable si le document est en affichage long).
+Les références telles que @baumer2014 renvoient vers la bibliographie en fin de document (cliquable si le document est en affichage long).
 
 La navigation au sein de ce document html peut s'effectuer à l'aide des touches suivantes :
 
@@ -207,7 +207,7 @@ Quelques remarques :
 
 - l'information disponible sur les portails semblent redondantes quelques fois : en réalité ces portails communiquent entre eux
 - ces capacités de communication (nommées web services) permettent un traitement plus aisée de l'information : l'utilisateur demande directement l'information aux portails et récupérent la donnée sur la zone et la période qu'il intéresse
-- ceci permet d'assurer la reproductibilité des résultats [@baumer2015Markdown] et assure que les données répondent à la notion [FAIR](https://fr.wikipedia.org/wiki/Fair_data) (Facile à trouve, Accessible,Interopérable et Réutilisable)
+- ceci permet d'assurer la reproductibilité des résultats [@baumer2014] et assure que les données répondent à la notion [FAIR](https://fr.wikipedia.org/wiki/Fair_data) (Facile à trouve, Accessible,Interopérable et Réutilisable)
 
 </div>
 
@@ -232,7 +232,7 @@ Pour le milieu marin français, la zone économique exclusive comportant 11.691.
   - politique commune des pêches européenne (PCP)
   - etc...
 
-Ces structures sont très variables dans leurs fonctionnements et leurs mises en oeuvre. Il y a évidemment des passerelles juridiques et opérationnelles entre chacun d'elles.  
+Ces structures sont très variables dans leurs fonctionnements et leurs mises en oeuvre. Il y a évidemment des passerelles juridiques et opérationnelles entre chacune d'elles.  
 
 ## Conventions et directives : conventions internationales
 
@@ -241,7 +241,7 @@ Conventions globales :
 - la convention des Nations Unies sur le droit de la mer (CNUDM) : 
 adoptée en 1982, définie un régime de droit global pour les océans et mers de la planète. Ratifiée par 168 états. Elle délimite les espaces maritimes sous juridiction nationale (zone économique exclusive à 200 milles marins). 3 organismes intergouvernementaux : la Commission des limites du plateau continental, le Tribunal international du droit de la mer et l’Autorité internationale des fonds marins. 
 
-- La Convention sur la diversité biologique  (CDB) est un traité international juridiquement contraignant (1992). Il impose notamment aux États qui l’ont ratifié, d’établir des stratégies et plans d’action nationaux pour la biodiversité. 3 objectifs : conservation de la biodiversité (écosystèmes, espèces, ressources génétiques), utilisation durable, partage juste et équitables des ressources génétiques. Approche ecosystèmique mise en avant. Organe directeur de la CDB : la Conférence des Paries (COP).
+- La Convention sur la diversité biologique  (CDB) est un traité international juridiquement contraignant (1992). Il impose notamment aux États qui l’ont ratifié, d’établir des stratégies et plans d’action nationaux pour la biodiversité. 3 objectifs : conservation de la biodiversité (écosystèmes, espèces, ressources génétiques), utilisation durable, partage juste et équitables des ressources génétiques. Approche ecosystèmique mise en avant. Organe directeur de la CDB : la Conférence des Parties (COP).
 
 Conventions des mers régionales :
 
@@ -252,11 +252,11 @@ Les travaux de la Convention sont menés par la Commission OSPAR (15 membres : A
 Approche écosystémique, approche qui doit "essentiellement permettre une exploitation durable des ressources naturelles tout en maintenant la qualité, la structure et le fonctionnement des écosystèmes marins" (OSPAR 2010), et par des stratégies thématiques pour répondre aux principales menaces identifiées.
 - autres : convention de Carthagène (1983) pour la Protection et la Mise en Valeur du Milieu Marin dans la Région des Caraïbes (Guadeloupe, Martinique, St-Barthélemy, Saint-Martin, Guyane); convention de Nairobi (1985) pour la protection, la gestion et la mise en valeur du milieu marin et côtier de la région de l'Océan Indien occidental, la Convention pour la Conservation de la Faune et de la Flore Marines de l’Antarctique (CCAMLR, 1980), convention de Nouméa pour la Protection des Ressources Naturelles et de l’Environnement de la Région du Pacifique Sud (SPREP, 1986).    
 
-```{r, echo=FALSE, out.width="100%", fig.cap=""}
+```{r, echo=FALSE, out.width="100%", fig.cap="Pays ayant ratifié la convention de Barcelone"}
 knitr::include_graphics("../img/barcelone.png")
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.cap=""}
+```{r, echo=FALSE, out.width="100%", fig.cap="Pays concernés par la convention OSPAR"}
 knitr::include_graphics("../img/ospar.png")
 ```
 
