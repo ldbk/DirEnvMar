@@ -1,5 +1,5 @@
 # DirEnvMar
-Dépôt de cours sur les directives européennes touchant au milieu marin et leurs mises en application
+Dépôt de cours sur les directives européennes touchant au milieu marin et leurs mises en application (cours 2021 & 2022).
 
 # A modifier
 
