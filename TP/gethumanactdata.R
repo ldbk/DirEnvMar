@@ -2,6 +2,7 @@ library(sf)
 library(httr)
 library(tidyverse)
 library(ows4R)
+library(raster)
 #from
 #https://inbo.github.io/tutorials/tutorials/spatial_wfs_services/
 
@@ -87,17 +88,17 @@ getais<-function(nom="emodnet:2017_01_st_All",xmin=-1.5,xmax=0.5,ymin=49.2,ymax=
 #12 type of vessels from 00 to 12
 #time from 2017-01 to 2019-10
 #generate name
-alltime<-expand.grid(vesstype=sprintf("%02d",0:12),month=sprintf("%02d",1:12),year=2017:2021)
+alltime<-expand.grid(vesstype=sprintf("%02d",0:12),month=sprintf("%02d",1:12),year=2017:2020)
 allnom<-paste0("emodnet:",paste(alltime$year,alltime$month,"st",alltime$vesstype,sep="_"))
 #allnom<-allnom[!grepl("2019_11",allnom)]
 #allnom<-allnom[!grepl("2019_12",allnom)]
 #linouuuux
-#allais<-parallel::mclapply(allnom,getais,mc.cores=parallel::detectCores())
-allais<-lapply(allnom,getais)
+allais<-parallel::mclapply(allnom,getais,mc.cores=parallel::detectCores())
+#allais<-lapply(allnom,getais)
 allais<-stack(allais)
 writeRaster(allais,filename="../data/allais",format="raster",overwrite=T)
 
 
 #a test
 fishing<-allais[[which(grepl("st_01",names(allais)))]]
-levelplot(stack(pipo)+1,zscaleLog=T)
+rasterVis::levelplot(stack(pipo)+1,zscaleLog=T)

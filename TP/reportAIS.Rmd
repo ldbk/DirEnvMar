@@ -107,7 +107,7 @@ classification est identifié à l'aide de la règle de la majorité déterminé
 
 ```{r datais, include=T,cache=T,echo=F}
 #load the data again
-allais<-stack("../data/humanactivities/allais")
+allais<-stack("../data/allais")
 #buil a stack by maritime activities
 #fishing : st_01
 #service : Service (pilog, search and rescue, port tender, antipol medi) st_02, 
@@ -146,6 +146,7 @@ r2tab<-function(dat=fishingAIS,nom="pêche"){
 	return(uu)
 }
 t1<-r2tab(fishingAIS,"pêche")
+
 t2<-r2tab(dredgingAIS,"dragage")
 t3<-r2tab(transportAIS,"transport")
 t4<-r2tab(sailingAIS,"plaisance")
@@ -202,6 +203,8 @@ ais<-stack(fish,dred,serv,trans,sail)
 names(ais)<-c("pêche","dragage","services","transport","plaisance")
 r0<- raster(nrow=30, ncol=80, xmn=-1.400764, xmx=0.3900167, ymn=49.30618, ymx=49.80057)
 ais<-crop(ais,extent(r0))
+writeRaster(allais,filename="../data/aisgp",format="raster",overwrite=T)
+
 #ais<-resample(ais,r0)
 #plot(ais)
 ```
