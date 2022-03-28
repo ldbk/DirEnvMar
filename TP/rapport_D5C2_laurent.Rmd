@@ -1,7 +1,7 @@
 ---
-title: "Travaux pratiques 1"
+title: "Etude d'un indicateur d'eutrophisation en Baie de Seine"
 author: "Laurent"
-date: "2/19/2020"
+date: "28/03/2022"
 output:
   html_document:
     df_print: paged
@@ -13,44 +13,22 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Objectifs
 
-L'objectif de ce TP est d'appréhender la mise en oeuvre d'un rapport automatique en Rmarkdown, ce qui signifie mélanger texte et analyses à partir de données ouvertes. Ce rapport traitera du calcul du descripteur D5C2 de la Directive Cadre Stratégie pour le milieu marin.
+Ce rapport présente l'évolution des concentrations en chlorophylle a et de l'indicateur D5C2 associé.
 
 ## Données
 
 Nous allons utiliser des données issues de l'observation satellitales de la couleur de l'eau permettant de quantifier la concentration en chlorophylle a du milieu.
+Les données proviennent du portail Copernicus <https://marine.copernicus.eu/>. 
+Il s'agit des données OCEANCOLOUR_GLO_CHL_L4_REP_OBSERVATIONS_009_082
+(dataset-oc-glo-bio-multi-l4-chl_4km_monthly-rep)
+extraites pour la baie de Seine, de 2010 à 2019. 
 
 ## Outils
 
-### Rappels et consignes de moindre importance
+Nous utilisons R et des librairies dédiées à l'exploitation de données raster.
 
-R est un logiciel dédié à l'anlyse de données. RStutio est un environnement de
-travail intégré qui permet de faciliter le travail sous R.
-
-- `getwd()` et `setwd()` permette de renseigner ou de positionner R dans un répertoire de travail
-  donné.
-- `NA` signifie donnée manquante.
-- `print()` affiche le contenu d'un objet ou un résumé de ce dernier.
-- `head()` affiche les 10 premières valeurs d'un objet.
-- `tail()` affiche les 10 dernières valeurs d'un objet.
-- pour installer une librairie (package) : `install.package("nomdupackage")`.
-- le travail est à mener en utilisant un script.
-- Pensez à enregistrer votre script.
-- Pensez à enregistrer votre script.
- 
-
-### Pré-requis (?) :
-
-- R via RStudio installé,
-- savoir utiliser l'aide (comprendre l'usage d'une fonction et ses paramètres)
-- installer un package : menu Outils/Tools ou la commande install.packages().
-- savoir positionner son environnement de travail : getwd(), setwd() et retrouver des objets téléchargés sur son disque dur dans R.
-- un peu de statistique, des notions de SIG et c'est tout.
-
-## Librairies nécessaires
-
-Utiliser RStudio pour installer les librairies suivantes :
 ```{r lib}
-library(ncdf4) #si cela ne fonctionne pas me l'indiquer
+library(ncdf4) 
 library(raster)
 library(rasterVis)
 library(mapdata)
@@ -60,17 +38,6 @@ library(maps)
 ## Données
 
 Soit : 
-- <https://marine.copernicus.eu/> 
-- -> ocean products 
-- -> OCEANCOLOUR_GLO_CHL_L4_REP_OBSERVATIONS_009_082
-- add to cart
-- puis cart -> download product
-- choose a dataset -> dataset-oc-glo-bio-multi-l4-chl_4km_monthly-rep
-- renseigner les coodonnées suivantes pour la baie de Seine : xmin=-1.5, xmax=0.8, ymin=49.2, ymax=49.7.
-- date 2010-01-02 à 2019-31-12
-- download CHL seulement
-- cliquer sur download
-- enregisrer le fichier .nc sur votre disque
 
 Soit utiliser les fichiers présents dans le répertoire data.
 
