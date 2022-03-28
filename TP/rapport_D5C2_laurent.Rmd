@@ -5,6 +5,7 @@ date: "28/03/2022"
 output:
   html_document:
     df_print: paged
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -38,7 +39,7 @@ library(maps)
 
 ### Lecture des données 
 
-```{r readdata1,eval=T}
+```{r readdata1,eval=T,echo=FALSE,message=F,warning=F}
 chl<-stack("../data/chl.nc")
 ```
 
