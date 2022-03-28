@@ -54,6 +54,16 @@ meanchlpetit<-mean(chlpetit)
 plot(meanchlpetit)
 ```
 
+## Séries temporelle
+```{r serietemp,eval=TRUE}
+#serie temporelle
+chlts<-cellStats(chlpetit,stat="mean",na.rm=T)
+#vecteur temporel
+temps<-strptime(gsub("X","",names(chlts)),"%Y.%m.%d")
+plot(temps,chlts,type="l")
+
+```
+
 ## Manipulation de l'information
 
 ```{r xplo,eval=FALSE}
