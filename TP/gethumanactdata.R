@@ -10,7 +10,7 @@ library(raster)
 wfs_ha<-"https://ows.emodnet-humanactivities.eu/wfs"#/wfs?SERVICE=WFS&VERSION=1.1.0&request=GetFeature&typeName=",name,"&OUTPUTFORMAT=csv&WGS84BoundingBox=",bbox)
 #get capabilities to have the list of data
 bwk_client <- WFSClient$new(wfs_ha,
-			    serviceVersion = "1.1.0")
+                            serviceVersion = "1.1.0")
 bwk_client
 #get capabilities
 bwk_client$getCapabilities()
@@ -21,20 +21,20 @@ featlist<-bwk_client$getFeatureTypes(pretty=TRUE)
 
 #a fct to get some data
 gethumact<-function(nom="emodnet:aggregateareas",request="GetFeature"){
-	url<-parse_url("https://ows.emodnet-humanactivities.eu/wfs")
-	#nom="emodnet:aggregateareas"
-	url$query <- list(service = "WFS",
-			  version = "1.1.0",
-			  request = "", 
-			  typename="",
-			  bbox= "49.2,-1.5,49.8,0", 
-			  outputFormat = "application/json")
-	url$query$typename<-nom
-	url$query$request<-request
-	#url$query<-list(typename =nom)
-	request <- build_url(url)
-	uu<-read_sf(request)
-	return(uu)
+  url<-parse_url("https://ows.emodnet-humanactivities.eu/wfs")
+  #nom="emodnet:aggregateareas"
+  url$query <- list(service = "WFS",
+                    version = "1.1.0",
+                    request = "", 
+                    typename="",
+                    bbox= "49.2,-1.5,49.8,0", 
+                    outputFormat = "application/json")
+  url$query$typename<-nom
+  url$query$request<-request
+  #url$query<-list(typename =nom)
+  request <- build_url(url)
+  uu<-read_sf(request)
+  return(uu)
 }
 
 #get the dataaaaa
@@ -66,7 +66,7 @@ ggplot(windfarms)+geom_sf()+borders("world") +coord_sf(ylim=c(49.2,49.8),xlim=c(
 wcs_ha<-"https://ows.emodnet-humanactivities.eu/wcs"
 #get capabilities to have the list of data
 bwk_client <- WFSClient$new(wfs_ha, 
-			    serviceVersion = "1.0.0")
+                            serviceVersion = "1.0.0")
 bwk_client
 #get capabilities
 bwk_client$getCapabilities()
@@ -74,14 +74,14 @@ bwk_client$getCapabilities()
 featlist<-bwk_client$getFeatureTypes(pretty=TRUE)
 #now a dirty function to get the data sequentially
 getais<-function(nom="emodnet:2017_01_st_All",xmin=-1.5,xmax=0.5,ymin=49.2,ymax=49.8){
-	url<-paste0("https://ows.emodnet-humanactivities.eu/wcs?service=wcs&version=1.0.0&request=getcoverage&coverage=",nom,"&crs=EPSG:4326&BBOX=",xmin,",",ymin,",",xmax,",",ymax,"&format=image/tiff&interpolation=nearest&resx=0.00833333&resy=0.00833333")
-	nomfich<-tempfile(nom)
-  	utils::download.file(url,nomfich,quiet=TRUE,mode="wb")
-	#return the corresponding raster"
-	img<-raster::raster(nomfich)
-	names(img)<-nom
-	print(nom)
-	return(img)
+  url<-paste0("https://ows.emodnet-humanactivities.eu/wcs?service=wcs&version=1.0.0&request=getcoverage&coverage=",nom,"&crs=EPSG:4326&BBOX=",xmin,",",ymin,",",xmax,",",ymax,"&format=image/tiff&interpolation=nearest&resx=0.00833333&resy=0.00833333")
+  nomfich<-tempfile(nom)
+  utils::download.file(url,nomfich,quiet=TRUE,mode="wb")
+  #return the corresponding raster"
+  img<-raster::raster(nomfich)
+  names(img)<-nom
+  print(nom)
+  return(img)
 }
 
 #now loop on the param name: name syntax year_month_st_typevessel
