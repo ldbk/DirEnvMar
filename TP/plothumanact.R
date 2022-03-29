@@ -3,7 +3,7 @@ library(tidyverse)
 library(ggrepel)
 library(rnaturalearthdata)
 
-load("./data/Polycut.Rdata")
+load("../data/Polycut.Rdata")
 
 #read the data
 nat2000<-readRDS("./data/nat2000.rds")
