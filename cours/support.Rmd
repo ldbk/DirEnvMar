@@ -41,8 +41,8 @@ La navigation au sein de ce document html peut s'effectuer à l'aide des touches
 
 ### Organisation
 
-- 9 heures : 6h le 24 mars 2021 (9-12h puis 14-17h) et 3h le 25 mars 2021 (9h-12h)
-- en visioconférence (liens zoom à venir)
+- 9 heures : 7h le 28 mars 2022 (10h-12h puis 13h15-17h) et 3h le 29 mars 2022 (13h30-17h)
+- en présentiel
 - alternance de présentations et d'exercices pratiques avec des pauses régulières
 - matériels : un ordinateur avec [RStudio Desktop](https://rstudio.com/products/rstudio/download/) 
 installé, connection internet  
