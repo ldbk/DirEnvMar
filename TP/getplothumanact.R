@@ -54,17 +54,17 @@ dredgespoil<-gethumact('dredgespoil')
 munpol<-gethumact('munitionspoly') 
 munpt<-gethumact('munitions') 
 windfarms<-gethumact('windfarmspoly') 
-
-#a map
+lighthouses<-gethumact('lighthouses') 
 
 #a map
 ggplot()+
-  geom_sf(data=nat2000,aes(fill=sitetype),alpha=.2)+
-  geom_sf(data=aggareas%>%mutate(type="agg"),aes(fill=type),alpha=.4)+
-  geom_sf(data=munpol%>%mutate(type="mun"),aes(fill=type),fill="pink")+
-  geom_sf(data=munpt,color="red")+
-  geom_sf(data=windfarms,fill="blue")+
-  geom_sf(data=dredgespoil%>%mutate(type="agg"),aes(color=type))+
+  #geom_sf(data=nat2000,aes(fill=sitetype),alpha=.2)+
+ # geom_sf(data=aggareas%>%mutate(type="agg"),aes(fill=type),alpha=.4)+
+#  geom_sf(data=munpol%>%mutate(type="mun"),aes(fill=type),fill="pink")+
+#  geom_sf(data=munpt,color="red")+
+#  geom_sf(data=windfarms,fill="blue")+
+#  geom_sf(data=dredgespoil%>%mutate(type="agg"),aes(color=type))+
+  geom_sf(data=lighthouses,color="red")+
   borders("world",fill="grey") +
   coord_sf(ylim=c(49.2,51.2),xlim=c(-2,2))+
   theme_bw()
